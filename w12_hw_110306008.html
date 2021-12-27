@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <center>
+            <h1>guessing game</h1>
+            <p>your guess(1-100)</p>
+            <input type="text" id="num">
+            <button onclick="g()">play</button>
+            <table id="table">
+                <tr>
+                    <th>
+                        Result
+                    </th>
+                </tr>
+            </table>
+        </center>
+        <script>
+            var ans=Math.floor(Math.random()*100+1);
+            var up=100,down=1;
+
+            function s(a,b) {
+                var tr = document.createElement("tr"); 
+                var td = document.createElement("td"); 
+                var t =  document.createTextNode(b+"-"+a);
+                td.appendChild(t);
+                tr.appendChild(td);
+                document.getElementById("table").appendChild(tr);
+            }
+
+            
+            function g(){   
+                var num,n;
+                var test=1;
+                n=document.getElementById("num").value;
+                num=parseInt(n);
+                alert(ans);
+                while(test==1){        
+                    if(num==ans){
+                        alert("rihgt!");
+                        test=0;
+                        location.reload();
+                        break;
+                    }else if(num>ans){
+                        
+                        up=num;
+                        s(up,down);
+                        
+                        break;
+                    }else if(num<ans){
+                        
+                        down=num;
+                        s(up,down);
+                        
+                        break;
+                    }
+                }
+            }
+            
+        </script>
+    </body>
+</html>
